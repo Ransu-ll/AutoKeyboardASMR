@@ -22,8 +22,8 @@ const keyboard_audio_list = [audio_keyboard00, audio_keyboard01, audio_keyboard0
     audio_keyboard12, audio_keyboard13, audio_keyboard14,
     audio_keyboard15];
 
-
-// The above was generated with assistance from the following code
+// The above was generated with assistance from the following python code
+// in the directory where the audio files exist.
 `
 from pathlib import Path
 
@@ -40,6 +40,9 @@ print(output)
 print(output_files)
 `
 
+
+let audioPlaying = false;
+
 function sleep(ms) {
     /**
      * @param {Number} ms - The delay duration in milliseconds
@@ -50,12 +53,32 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function togglePlaying(button) {
+    /**
+     * @param button - The ID of the button which to change the text of.
+     * 
+     * Toggles whether or not audio is playing.
+     */
+
+    if (audioPlaying) {
+        audioPlaying = false;
+        button.innerText = "Play";
+        
+    } else {
+        audioPlaying = true;
+        button.innerText = "Pause";
+    }
+
+    playTypingAudio(100);
+
+}
+
 async function playTypingAudio(delay) {
     /**
      * @param {Number} delay - The delay between each keyboard click in milliseconds.
-    */
+     */
 
-    while (true) {
+    while (audioPlaying) {
         await sleep(delay).then(() => {
             keyboard_audio_list[Math.floor(Math.random() * keyboard_audio_list.length)].play();
         })

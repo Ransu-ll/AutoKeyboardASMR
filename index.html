@@ -9,15 +9,17 @@
 </head>
 <body>
     <h1>Auto Keyboard ASMR</h1>
-    <button id="btnPlayAudio" onclick="togglePlaying(this)">Play</button>
-    <button id="btnToggleMode" onclick="toggleMode(displayState)">Toggle State</button>
-    <div>
+    <div id="divMainControls">
+        <button id="btnPlayAudio" onclick="togglePlaying(this)">Play</button>
+        <button id="btnToggleMode" onclick="toggleMode(displayState)">Toggle to Dark Mode</button>
+    </div>
+    <div id="divVolumeControls">
         <h2>Volume</h2>
         <input id="inpVolumeControlSlider" type="range" value="100">
         <input id="inpVolumeControlNumberBox" type="number" min="1" max="100" value="100">
         <p>Quieter - Faster</p>
     </div>
-    <div>
+    <div id="divRateControls">
         <h2>Playback Rate</h2>
         <input id="inpPlaybackControlSlider" type="range" min="1" max="2000" value="100">
         <input id="inpPlaybackControlNumberBox" type="number" min="1" max="2000" value="100">

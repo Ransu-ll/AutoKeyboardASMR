@@ -47,6 +47,7 @@ let volume = 1;
 let displayState = "light"
 
 let playButton = document.getElementById("btnPlayAudio");
+let toggleModeButton = document.getElementById("btnToggleMode")
 
 let volControlSlider = document.getElementById("inpVolumeControlSlider");
 let volControlNumberBox = document.getElementById("inpVolumeControlNumberBox");
@@ -144,8 +145,10 @@ function toggleMode(state) {
     if (state == "light") {
         document.body.style.cssText = darkMode;
         displayState = "dark";
+        toggleModeButton.innerHTML = "Toggle to Light Mode";
     } else {
         document.body.style.cssText = lightMode;
         displayState = "light";
+        toggleModeButton.innerHTML = "Toggle to Dark Mode";
     }
 }

@@ -42,6 +42,7 @@ print(output_files)
 
 
 let audioPlaying = false;
+let clickDelay = 100;
 
 function sleep(ms) {
     /**
@@ -69,7 +70,7 @@ function togglePlaying(button) {
         button.innerText = "Pause";
     }
 
-    playTypingAudio(100);
+    playTypingAudio(clickDelay);
 
 }
 

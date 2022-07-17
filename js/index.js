@@ -44,8 +44,14 @@ print(output_files)
 let audioPlaying = false;
 let clickDelay = 100;
 let volume = 1;
-let volControl = document.getElementById("inpVolumeControl");
-let volOutput = document.getElementById("pVolumeOutput");
+
+let playButton = document.getElementById("btnPlayAudio");
+
+let volControlSlider = document.getElementById("inpVolumeControlSlider");
+let volControlNumberBox = document.getElementById("inpVolumeControlNumberBox");
+
+let playbackControlSlider = document.getElementById("inpPlaybackControlSlider");
+let playbackControlNumberBox = document.getElementById("inpPlaybackControlNumberBox");
 
 function sleep(ms) {
     /**
@@ -57,7 +63,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function togglePlaying(button) {
+async function togglePlaying(button) {
     /**
      * @param button - The ID of the button which to change the text of.
      * 
@@ -73,18 +79,21 @@ function togglePlaying(button) {
         button.innerText = "Pause";
     }
 
-    playTypingAudio(clickDelay);
-
+    playTypingAudio();
 }
 
-async function playTypingAudio(delay) {
+async function playTypingAudio() {
     /**
      * @param {Number} delay - The delay between each keyboard click in milliseconds.
      */
 
     while (audioPlaying) {
-        await sleep(delay).then(() => {
-            keyboard_audio_list[Math.floor(Math.random() * keyboard_audio_list.length)].play();
+        await sleep(clickDelay).then(() => {
+            // The delay might have occurred and audioPlaying may have been
+            // set to false in between then, hence if statement.
+            if (audioPlaying) {
+                keyboard_audio_list[Math.floor(Math.random() * keyboard_audio_list.length)].play();
+            }
         })
     }
 }
@@ -95,7 +104,22 @@ function changeVolume(newVolume) {
     }
 }
 
-volControl.oninput = function() {
+volControlSlider.oninput = function() {
     changeVolume(this.value);
-    volOutput.textContent = this.value;
+    volControlNumberBox.value = this.value;
+}
+
+volControlNumberBox.oninput = function() {
+    changeVolume(this.value);
+    volControlSlider.value = this.value;
+}
+
+playbackControlSlider.oninput = function() {
+    clickDelay = this.value;
+    playbackControlNumberBox.value = this.value;
+}
+
+playbackControlNumberBox.oninput = function() {
+    clickDelay = this.value;
+    playbackControlSlider.value = this.value;
 }

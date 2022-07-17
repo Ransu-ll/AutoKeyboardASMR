@@ -12,9 +12,15 @@
     <button id="btnPlayAudio" onclick="togglePlaying(this)">Play</button>
     <div>
         <h2>Volume</h2>
-        <input id="inpVolumeControl" type="range" value="100">
-        <p id="pVolumeOutput">100</p>
+        <input id="inpVolumeControlSlider" type="range" value="100">
+        <input id="inpVolumeControlNumberBox" type="number" min="1" max="100" value="100">
     </div>
+    <div>
+        <h2>Playback Rate</h2>
+        <input id="inpPlaybackControlSlider" type="range" min="1" max="2000" value="100">
+        <input id="inpPlaybackControlNumberBox" type="number" min="1" max="2000" value="100">
+    </div>
+
     <script src="js/index.js"></script>
 </body>
 </html>

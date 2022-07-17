@@ -43,6 +43,9 @@ print(output_files)
 
 let audioPlaying = false;
 let clickDelay = 100;
+let volume = 1;
+let volControl = document.getElementById("inpVolumeControl");
+let volOutput = document.getElementById("pVolumeOutput");
 
 function sleep(ms) {
     /**
@@ -84,4 +87,15 @@ async function playTypingAudio(delay) {
             keyboard_audio_list[Math.floor(Math.random() * keyboard_audio_list.length)].play();
         })
     }
+}
+
+function changeVolume(newVolume) {
+    for (let i = 0; i < keyboard_audio_list.length; i++) {
+        keyboard_audio_list[i].volume = newVolume/100;
+    }
+}
+
+volControl.oninput = function() {
+    changeVolume(this.value);
+    volOutput.textContent = this.value;
 }

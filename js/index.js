@@ -44,6 +44,7 @@ print(output_files)
 let audioPlaying = false;
 let clickDelay = 100;
 let volume = 1;
+let displayState = "light"
 
 let playButton = document.getElementById("btnPlayAudio");
 
@@ -122,4 +123,29 @@ playbackControlSlider.oninput = function() {
 playbackControlNumberBox.oninput = function() {
     clickDelay = this.value;
     playbackControlSlider.value = this.value;
+}
+
+function toggleMode(state) {
+    /**
+     * @param state - current display state of page
+     * 
+     * Toggles the display of the page
+     */
+    let darkMode = `
+    background-color: black;
+    color: white;
+    `;
+
+    let lightMode = `
+    background-color: white;
+    color: black;
+    `
+
+    if (state == "light") {
+        document.body.style.cssText = darkMode;
+        displayState = "dark";
+    } else {
+        document.body.style.cssText = lightMode;
+        displayState = "light";
+    }
 }

@@ -1,3 +1,8 @@
+body {
+    background-color: black;
+    color: white;
+}
+
 #divMainControls button {
     display: block;
     margin: 10px 0;

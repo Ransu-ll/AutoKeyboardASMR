@@ -44,7 +44,7 @@ print(output_files)
 let audioPlaying = false;
 let clickDelay = 100;
 let volume = 1;
-let displayState = "light"
+let displayState = "dark";
 
 let playButton = document.getElementById("btnPlayAudio");
 let toggleModeButton = document.getElementById("btnToggleMode")

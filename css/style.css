@@ -3,7 +3,24 @@ body {
     color: white;
 }
 
+@font-face {
+    font-family: 'comfortaaregular';
+    src: url('comfortaa-variablefont_wght-webfont.woff2') format('woff2'),
+         url('comfortaa-variablefont_wght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1, h2 {
+    font-family: 'comfortaaregular', cursive;
+}
+
 #divMainControls button {
     display: block;
     margin: 10px 0;
+}
+
+.help {
+    font-family: monospace;
 }

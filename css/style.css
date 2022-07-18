@@ -29,6 +29,10 @@ input[type="range"] {
     display: block;
 }
 
+input[type="number"] {
+    width: 75px;
+}
+
 .help {
     font-family: monospace;
 }

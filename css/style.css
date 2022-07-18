@@ -21,6 +21,22 @@ h1, h2 {
     margin: 10px 0;
 }
 
+.slider-control-combo {
+    display: inline-block;
+}
+
+input[type="range"] {
+    display: block;
+}
+
 .help {
     font-family: monospace;
+}
+
+.help.left {
+    float: left;
+}
+
+.help.right {
+    float: right;
 }

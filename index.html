@@ -15,15 +15,21 @@
     </div>
     <div id="divVolumeControls" class="controls">
         <h2>Volume</h2>
-        <input id="inpVolumeControlSlider" type="range" value="100">
+        <div class="slider-control-combo">
+            <input id="inpVolumeControlSlider" type="range" value="100">
+            <span class="help left">Quieter</span>
+            <span class="help right">Louder</span>
+        </div>
         <input id="inpVolumeControlNumberBox" type="number" min="1" max="100" value="100">
-        <p class="help">Quieter - Louder</p>
     </div>
     <div id="divRateControls" class="controls">
         <h2>Playback Rate</h2>
-        <input id="inpPlaybackControlSlider" type="range" min="1" max="2000" value="100">
+        <div class="slider-control-combo">
+            <input id="inpPlaybackControlSlider" type="range" min="1" max="2000" value="100">
+            <span class="help left">Faster</span>
+            <span class="help right">Slower</span>
+        </div>
         <input id="inpPlaybackControlNumberBox" type="number" min="1" max="2000" value="100">
-        <p class="help">Faster - Slower</p>
     </div>
 
     <script src="js/index.js"></script>

@@ -86,7 +86,7 @@ async function togglePlaying(button) {
 
 async function playTypingAudio() {
     /**
-     * @param {Number} delay - The delay between each keyboard click in milliseconds.
+     * Plays the typing audio based on the global variable `clickDelay`
      */
 
     while (audioPlaying) {
@@ -101,6 +101,11 @@ async function playTypingAudio() {
 }
 
 function changeVolume(newVolume) {
+    /**
+     * @param {Number} newVolume - the new volume of the audio as a whole number.
+     * 
+     * Changes the volume of the typing audio. 
+     */
     for (let i = 0; i < keyboard_audio_list.length; i++) {
         keyboard_audio_list[i].volume = newVolume/100;
     }
@@ -128,7 +133,7 @@ playbackControlNumberBox.oninput = function() {
 
 function toggleMode(state) {
     /**
-     * @param state - current display state of page
+     * @param state - current display state (light/dark mode) )of page
      * 
      * Toggles the display of the page
      */

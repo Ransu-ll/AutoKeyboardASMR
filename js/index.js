@@ -45,6 +45,7 @@ let audioPlaying = false;
 let clickDelay = 100;
 let volume = 1;
 let displayState = "dark";
+let prefersDarkMode = window.matchMedia("(prefers-color-scheme:dark)").matches;
 
 let playButton = document.getElementById("btnPlayAudio");
 let toggleModeButton = document.getElementById("btnToggleMode")
@@ -156,4 +157,9 @@ function toggleMode(state) {
         displayState = "light";
         toggleModeButton.innerHTML = "Toggle to Dark Mode";
     }
+}
+
+if (!prefersDarkMode) {
+    displayState = "light";
+    toggleModeButton.innerHTML = "Toggle to Dark Mode";
 }

@@ -1,6 +1,17 @@
-body {
-    background-color: black;
-    color: white;
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: black;
+        color: white;
+    }
 }
 
 @font-face {

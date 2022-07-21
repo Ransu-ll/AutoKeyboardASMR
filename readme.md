@@ -11,6 +11,7 @@ It will then start playing key clicks!
 **Options**
 - Volume: raise or lower the loudness of the audio. Minimum 0, maximum 100
 - Playback rate: the length of duration between each click in milliseconds. Minimum 1, maximum 2000
+- Timer: how long to play the clicking sounds for, in seconds. Minimum 0
 
 ## But why?
 Because some people like ASMR from clicky keyboards!

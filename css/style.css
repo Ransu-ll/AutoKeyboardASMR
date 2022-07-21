@@ -55,3 +55,11 @@ input[type="number"] {
 .help.right {
     float: right;
 }
+
+#divTimerBox > * {
+    margin: 15px 0;
+}
+
+#inpTimerInput:disabled {
+    color: white;
+}

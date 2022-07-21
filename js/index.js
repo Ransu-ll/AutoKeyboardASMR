@@ -46,6 +46,7 @@ let clickDelay = 100;
 let volume = 1;
 let displayState = "dark";
 let prefersDarkMode = window.matchMedia("(prefers-color-scheme:dark)").matches;
+let breakFromTimer = false;
 
 let playButton = document.getElementById("btnPlayAudio");
 let toggleModeButton = document.getElementById("btnToggleMode")
@@ -55,6 +56,10 @@ let volControlNumberBox = document.getElementById("inpVolumeControlNumberBox");
 
 let playbackControlSlider = document.getElementById("inpPlaybackControlSlider");
 let playbackControlNumberBox = document.getElementById("inpPlaybackControlNumberBox");
+
+let timerInput = document.getElementById("inpTimerInput");
+let timerStart = document.getElementById("btnTimerStart");
+let timerStop = document.getElementById("btnTimerStop");
 
 function sleep(ms) {
     /**
@@ -162,4 +167,67 @@ function toggleMode(state) {
 if (!prefersDarkMode) {
     displayState = "light";
     toggleModeButton.innerHTML = "Toggle to Dark Mode";
+}
+
+function enableTimerElements(value) {
+    /**
+     * @param {bool} value - whether or not to disable elements
+     */
+
+    if (value == false) {
+        timerInput.disabled = true;
+        timerStart.disabled = true;
+        audioPlaying = false;
+        togglePlaying(playButton);
+    } else if (value == true) {
+        timerInput.disabled = false;
+        timerStart.disabled = false;
+        audioPlaying = true;
+        togglePlaying(playButton);
+    }
+}
+
+async function countTimerDown(seconds) {
+    /**
+     * @param {Number} seconds - the number of seconds to count down from
+     * 
+     * Starts counting down the timer
+     */
+    
+    if (audioPlaying) {
+        audioPlaying = false;
+        await sleep(playbackControlNumberBox.value).then(() => {})
+    }
+    enableTimerElements(false);
+
+    for (let i = seconds - 1; i >= 0; i--) {
+        if (breakFromTimer) {
+            breakFromTimer = false;
+            break;
+        }
+
+        await sleep(1000).then(() => {
+            timerInput.value = i;
+        })
+    }
+    enableTimerElements(true);
+}
+
+function stopTimer() {
+    /**
+     * Stop the timer.
+     */
+
+    breakFromTimer = true;
+    audioPlaying = false;
+    enableTimerElements(true);
+    
+}
+
+timerStart.onclick = function() {
+    countTimerDown(parseInt(timerInput.value));
+}
+
+timerStop.onclick = function() {
+    stopTimer();
 }
